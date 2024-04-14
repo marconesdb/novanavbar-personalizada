@@ -60,14 +60,8 @@
             .navbar .md\:flex {
                 display: none; /* Esconde os links da navbar no intervalo de até 1200px */
             }
-            .navbar .hidden {
+            .navbar .menu-toggle {
                 display: block; /* Mostra o menu hamburguer no intervalo de até 1200px */
-            }
-        }
-        @media (max-width: 768px) {
-            .navbar {
-                width: 40%; /* Define a largura como 40% da largura da tela abaixo de 768px */
-                padding: 0.5rem; /* Reduz o preenchimento */
             }
         }
         @media (max-width: 540px) {
@@ -75,8 +69,11 @@
                 width: 40%; /* Define a largura como 40% da largura da tela abaixo de 540px */
                 padding: 0.5rem; /* Reduz o preenchimento */
             }
-            .navbar .hidden {
-                display: none; /* Esconde o menu hamburguer abaixo de 540px */
+            .navbar .md\:flex {
+                display: none; /* Esconde os links da navbar no intervalo de até 540px */
+            }
+            .navbar .menu-toggle {
+                display: block; /* Mostra o menu hamburguer abaixo de 540px */
             }
         }
     </style>
@@ -88,7 +85,7 @@
             <a href="#" class="text-white text-lg font-semibold flex items-center">
                 <img src="./Clown (1).png" alt="" class="w-36 h-36 mr-4"> <!-- Aqui estou definindo a largura e altura da imagem como 16 unidades -->
             </a>
-            <div class="md:hidden">
+            <div class="md:hidden menu-toggle">
                 <button id="menu-toggle" class="text-white focus:outline-none">
                     <!-- Ícone do menu (hamburger) -->
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
