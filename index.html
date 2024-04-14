@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo de Navbar</title>
+    <!-- Adicione o link para o Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Adicione um arquivo CSS externo -->
+    <link href="styles.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('./gratisography.jpg'); /* Substitua '/caminho/para/sua/imagem.jpg' pelo caminho da sua imagem */
+            background-size: cover; /* Para cobrir completamente a tela */
+            background-position: top center; /* Centralize a imagem */
+            background-repeat: no-repeat; /* Evita a repetição da imagem */
+            margin: 0; /* Remova a margem padrão */
+            padding: 0; /* Remova o preenchimento padrão */
+            min-height: 100vh; /* Garante que o corpo da página ocupe pelo menos a altura da tela */
+            display: flex; /* Flexbox para centralizar verticalmente */
+            justify-content: center; /* Centraliza horizontalmente */
+            align-items: center; /* Centraliza verticalmente */
+        }
+        .navbar {
+            position: fixed; /* Define a posição como fixa para manter a navbar visível ao rolar */
+            top: 50%; /* Alinha a navbar ao centro verticalmente */
+            transform: translateY(-50%); /* Move a navbar para o centro vertical */
+            left: 0; /* Alinha a navbar à esquerda sem margem */
+            width: 40%; /* Define a largura como 40% da largura da tela */
+            padding: 1rem; /* Adiciona algum espaço interno */
+            background-color: rgba(0, 0, 0, 0.8); /* Fundo semi-transparente para melhorar a visibilidade */
+            z-index: 10; /* Ordem de empilhamento para garantir que a navbar fique acima do conteúdo */
+            display: flex; /* Altera o layout para flexível */
+            justify-content: space-between; /* Distribui os elementos uniformemente ao longo do eixo principal */
+            align-items: center; /* Alinha os itens verticalmente */
+        }
+        .navbar .container {
+            max-width: 7xl; /* Define a largura máxima do conteúdo da navbar */
+            display: flex; /* Layout flexível */
+            justify-content: space-between; /* Distribui os elementos uniformemente ao longo do eixo principal */
+            align-items: center; /* Alinha os itens verticalmente */
+            width: 100%; /* Ocupa toda a largura do contêiner */
+        }
+        .dropdown-menu {
+            display: none; /* Inicialmente oculto */
+            position: absolute;
+            z-index: 10;
+            width: max-content;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .dropdown-menu.active {
+            display: block; /* Mostra quando ativo */
+        }
+        @media (max-width: 1200px) {
+            .navbar {
+                width: 40%; /* Define a largura como 40% da largura da tela dentro do intervalo de até 1200px */
+                padding: 0.5rem; /* Reduz o preenchimento */
+            }
+            .navbar .md\:flex {
+                display: none; /* Esconde os links da navbar no intervalo de até 1200px */
+            }
+            .navbar .hidden {
+                display: block; /* Mostra o menu hamburguer no intervalo de até 1200px */
+            }
+        }
+        @media (max-width: 768px) {
+            .navbar {
+                width: 40%; /* Define a largura como 40% da largura da tela abaixo de 768px */
+                padding: 0.5rem; /* Reduz o preenchimento */
+            }
+        }
+        @media (max-width: 540px) {
+            .navbar {
+                width: 40%; /* Define a largura como 40% da largura da tela abaixo de 540px */
+                padding: 0.5rem; /* Reduz o preenchimento */
+            }
+            .navbar .hidden {
+                display: none; /* Esconde o menu hamburguer abaixo de 540px */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar Responsiva -->
+    <nav class="navbar">
+        <div class="container mx-auto">
+            <a href="#" class="text-white text-lg font-semibold flex items-center">
+                <img src="./Clown (1).png" alt="" class="w-36 h-36 mr-4"> <!-- Aqui estou definindo a largura e altura da imagem como 16 unidades -->
+            </a>
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-white focus:outline-none">
+                    <!-- Ícone do menu (hamburger) -->
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="hidden md:flex items-center space-x-4 relative">
+                <a href="#" class="text-white text-lg">Home</a>
+                <a href="#" class="text-white text-lg">Sobre</a>
+                <div class="relative inline-block">
+                    <button id="services-menu" class="text-white text-lg" aria-haspopup="true">
+                        Serviços
+                        <svg class="w-6 h-6 inline-block ml-1 -mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <!-- Dropdown menu -->
+                    <div id="dropdown-menu" class="dropdown-menu">
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Serviço 1</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Serviço 2</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Serviço 3</a>
+                    </div>
+                </div>
+                <a href="#" class="text-white text-lg">Contato</a>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        // Adicionar evento de clique ao botão do menu toggle
+        document.getElementById("menu-toggle").addEventListener("click", function() {
+            var navbar = document.querySelector(".navbar");
+            navbar.classList.toggle("active");
+        });
+
+        // Adicionar evento de clique ao botão do dropdown
+        document.getElementById("services-menu").addEventListener("click", function() {
+            var dropdownMenu = document.getElementById("dropdown-menu");
+            dropdownMenu.classList.toggle("active");
+        });
+    </script> 
+</body>
+</html>
