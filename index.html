@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -63,10 +63,13 @@
             .navbar .menu-toggle {
                 display: block; /* Mostra o menu hamburguer no intervalo de até 1200px */
             }
+            .navbar.active {
+                height: auto; /* Ajusta a altura da navbar automaticamente quando o menu hamburguer é aberto */
+            }
         }
         @media (max-width: 540px) {
             .navbar {
-                width: 40%; /* Define a largura como 40% da largura da tela abaixo de 540px */
+                width: 50%; /* Define a largura como 50% da largura da tela abaixo de 540px */
                 padding: 0.5rem; /* Reduz o preenchimento */
             }
             .navbar .md\:flex {
@@ -81,11 +84,11 @@
 <body>
     <!-- Navbar Responsiva -->
     <nav class="navbar">
-        <div class="container mx-auto">
+        <div class="container mx-auto flex ">
             <a href="#" class="text-white text-lg font-semibold flex items-center">
-                <img src="./Clown (1).png" alt="" class="w-36 h-36 mr-4"> <!-- Aqui estou definindo a largura e altura da imagem como 16 unidades -->
+                <img src="./Clown (1).png" alt="" class="w-36 h-36 mr-4 -ml-8"> <!-- Aqui estou definindo a largura e altura da imagem como 16 unidades -->
             </a>
-            <div class="md:hidden menu-toggle">
+            <div class="md:hidden">
                 <button id="menu-toggle" class="text-white focus:outline-none">
                     <!-- Ícone do menu (hamburger) -->
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -93,7 +96,7 @@
                     </svg>
                 </button>
             </div>
-            <div class="hidden md:flex items-center space-x-4 relative">
+            <div class="hidden md:flex flex-col items-start space-y-4 relative menu-items">
                 <a href="#" class="text-white text-lg">Home</a>
                 <a href="#" class="text-white text-lg">Sobre</a>
                 <div class="relative inline-block">
@@ -116,17 +119,31 @@
     </nav>
 
     <script>
-        // Adicionar evento de clique ao botão do menu toggle
-        document.getElementById("menu-toggle").addEventListener("click", function() {
-            var navbar = document.querySelector(".navbar");
-            navbar.classList.toggle("active");
-        });
-
-        // Adicionar evento de clique ao botão do dropdown
+        // Adicionar evento de clique ao botão do menu de serviços
         document.getElementById("services-menu").addEventListener("click", function() {
             var dropdownMenu = document.getElementById("dropdown-menu");
-            dropdownMenu.classList.toggle("active");
+            if (dropdownMenu.classList.contains("active")) {
+                dropdownMenu.classList.remove("active");
+            } else {
+                dropdownMenu.classList.add("active");
+            }
         });
-    </script> 
+
+        // Adicionar evento de clique ao botão do menu toggle
+        document.getElementById("menu-toggle").addEventListener("click", function() {
+            var menuItems = document.querySelector('.menu-items'); // Corrigido para '.menu-items'
+            var dropdownMenu = document.getElementById("dropdown-menu");
+            var navbar = document.querySelector('.navbar');
+            if (menuItems.style.display === "none" || menuItems.style.display === "") { // Ajustado para considerar também quando está vazio
+                menuItems.style.display = "flex";
+                dropdownMenu.classList.add("active");
+                navbar.classList.add("active");
+            } else {
+                menuItems.style.display = "none";
+                dropdownMenu.classList.remove("active");
+                navbar.classList.remove("active");
+            }
+        });
+    </script>
 </body>
 </html>
