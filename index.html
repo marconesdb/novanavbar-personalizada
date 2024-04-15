@@ -40,6 +40,7 @@
             justify-content: space-between; /* Distribui os elementos uniformemente ao longo do eixo principal */
             align-items: center; /* Alinha os itens verticalmente */
             width: 100%; /* Ocupa toda a largura do contêiner */
+            transition: width 0.3s ease; /* Adiciona uma transição suave ao alterar a largura */
         }
         .dropdown-menu {
             display: none; /* Inicialmente oculto */
@@ -67,6 +68,14 @@
                 height: auto; /* Ajusta a altura da navbar automaticamente quando o menu hamburguer é aberto */
             }
         }
+        @media (max-width: 767px) {
+            .navbar .md\:flex {
+                display: none; /* Esconde os itens do menu quando a largura da tela é de até 768px */
+            }
+            .navbar .menu-toggle {
+                display: block; /* Mostra o menu hamburguer no intervalo de até 768px */
+            }
+        }
         @media (max-width: 540px) {
             .navbar {
                 width: 50%; /* Define a largura como 50% da largura da tela abaixo de 540px */
@@ -78,6 +87,9 @@
             .navbar .menu-toggle {
                 display: block; /* Mostra o menu hamburguer abaixo de 540px */
             }
+            .navbar.active .container {
+                width: 80%; /* Aumenta a largura do contêiner quando o menu hamburguer é aberto */
+            }
         }
     </style>
 </head>
@@ -86,10 +98,10 @@
     <nav class="navbar">
         <div class="container mx-auto flex ">
             <a href="#" class="text-white text-lg font-semibold flex items-center w-40">
-                <img src="./Clown (1).png" alt="" class="w-40 h-36  -ml-4"> <!-- Aqui estou definindo a largura e altura da imagem como 16 unidades -->
+                <img id="logo" src="./Clown (1).png" alt="" class="logo w-36 h-36  -ml-4 object-cover"> <!-- Adicionei a propriedade object-fit -->
             </a>
-            <div class="md:hidden">
-                <button id="menu-toggle" class="text-white focus:outline-none">
+            <div>
+                <button id="menu-toggle" class="text-white focus:outline-none md:hidden">
                     <!-- Ícone do menu (hamburger) -->
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
@@ -138,10 +150,12 @@
                 menuItems.style.display = "flex";
                 dropdownMenu.classList.add("active");
                 navbar.classList.add("active");
+                document.getElementById("logo").classList.add("w-36"); // Aumenta o tamanho da imagem de logo ao abrir o menu hamburguer
             } else {
                 menuItems.style.display = "none";
                 dropdownMenu.classList.remove("active");
                 navbar.classList.remove("active");
+                document.getElementById("logo").classList.remove("w-36"); // Restaura o tamanho da imagem de logo ao fechar o menu hamburguer
             }
         });
     </script>
