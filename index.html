@@ -146,16 +146,17 @@
             var menuItems = document.querySelector('.menu-items'); // Corrigido para '.menu-items'
             var dropdownMenu = document.getElementById("dropdown-menu");
             var navbar = document.querySelector('.navbar');
+            var logo = document.getElementById("logo");
             if (menuItems.style.display === "none" || menuItems.style.display === "") { // Ajustado para considerar também quando está vazio
                 menuItems.style.display = "flex";
                 dropdownMenu.classList.add("active");
                 navbar.classList.add("active");
-                document.getElementById("logo").classList.add("w-36"); // Aumenta o tamanho da imagem de logo ao abrir o menu hamburguer
+                logo.classList.add("hidden"); // Oculta a imagem do logotipo ao abrir o menu hamburguer
             } else {
                 menuItems.style.display = "none";
                 dropdownMenu.classList.remove("active");
                 navbar.classList.remove("active");
-                document.getElementById("logo").classList.remove("w-28"); // Restaura o tamanho da imagem de logo ao fechar o menu hamburguer
+                logo.classList.remove("hidden"); // Exibe a imagem do logotipo ao fechar o menu hamburguer
             }
         });
     </script>
