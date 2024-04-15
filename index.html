@@ -8,97 +8,6 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <!-- Adicione um arquivo CSS externo -->
     <link href="styles.css" rel="stylesheet">
-    <style>
-        body {
-            background-image: url('./img/gratisography.jpg'); /* Substitua '/caminho/para/sua/imagem.jpg' pelo caminho da sua imagem */
-            background-size: cover; /* Para cobrir completamente a tela */
-            background-position: top center; /* Centralize a imagem */
-            background-repeat: no-repeat; /* Evita a repetição da imagem */
-            margin: 0; /* Remova a margem padrão */
-            padding: 0; /* Remova o preenchimento padrão */
-            min-height: 100vh; /* Garante que o corpo da página ocupe pelo menos a altura da tela */
-            display: flex; /* Flexbox para centralizar verticalmente */
-            justify-content: center; /* Centraliza horizontalmente */
-            align-items: center; /* Centraliza verticalmente */
-        }
-        .navbar {
-            position: fixed; /* Define a posição como fixa para manter a navbar visível ao rolar */
-            top: 50%; /* Alinha a navbar ao centro verticalmente */
-            transform: translateY(-50%); /* Move a navbar para o centro vertical */
-            left: 0; /* Alinha a navbar à esquerda sem margem */
-            width: 40%; /* Define a largura como 40% da largura da tela */
-            padding: 1rem; /* Adiciona algum espaço interno */
-            background-color: rgba(0, 0, 0, 0.8); /* Fundo semi-transparente para melhorar a visibilidade */
-            z-index: 10; /* Ordem de empilhamento para garantir que a navbar fique acima do conteúdo */
-            display: flex; /* Altera o layout para flexível */
-            justify-content: space-between; /* Distribui os elementos uniformemente ao longo do eixo principal */
-            align-items: center; /* Alinha os itens verticalmente */
-        }
-        .navbar .container {
-            max-width: 7xl; /* Define a largura máxima do conteúdo da navbar */
-            display: flex; /* Layout flexível */
-            justify-content: space-between; /* Distribui os elementos uniformemente ao longo do eixo principal */
-            align-items: center; /* Alinha os itens verticalmente */
-            width: 100%; /* Ocupa toda a largura do contêiner */
-            transition: width 0.3s ease; /* Adiciona uma transição suave ao alterar a largura */
-        }
-        .dropdown-menu {
-            display: none; /* Inicialmente oculto */
-            position: absolute;
-            z-index: 10;
-            width: max-content;
-            background-color: white;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .dropdown-menu.active {
-            display: block; /* Mostra quando ativo */
-        }
-        @media (max-width: 1200px) {
-            .navbar {
-                width: 40%; /* Define a largura como 40% da largura da tela dentro do intervalo de até 1200px */
-                padding: 0.5rem; /* Reduz o preenchimento */
-            }
-            .navbar .md\:flex {
-                /* display: none;  Removido para manter os itens do menu visíveis */
-            }
-            .navbar .menu-toggle {
-                display: block; /* Mostra o menu hamburguer no intervalo de até 1200px */
-            }
-            .navbar.active {
-                height: auto; /* Ajusta a altura da navbar automaticamente quando o menu hamburguer é aberto */
-            }
-        }
-        @media (max-width: 767px) {
-            .navbar .md\:flex {
-                display: none; /* Oculta os itens do menu quando a largura da tela é de até 768px */
-            }
-            .navbar .menu-toggle {
-                display: block; /* Mostra o menu hamburguer no intervalo de até 768px */
-            }
-            .menu-items { /* Adicionado seletor para os itens do menu */
-                display: none; /* Oculta os itens do menu */
-            }
-            .navbar.active .menu-items {
-                display: flex; /* Exibe os itens do menu quando o menu hamburguer é aberto */
-                flex-direction: column; /* Alinha os itens do menu verticalmente */
-            }
-        }
-        @media (max-width: 540px) {
-            .navbar {
-                width: 50%; /* Define a largura como 50% da largura da tela abaixo de 540px */
-                padding: 0.5rem; /* Reduz o preenchimento */
-            }
-            .navbar .md\:flex {
-                /* display: none;  Removido para manter os itens do menu visíveis */
-            }
-            .navbar .menu-toggle {
-                display: block; /* Mostra o menu hamburguer abaixo de 540px */
-            }
-            .navbar.active .container {
-                width: 80%; /* Aumenta a largura do contêiner quando o menu hamburguer é aberto */
-            }
-        }
-    </style>
 </head>
 <body>
     <!-- Navbar Responsiva -->
@@ -137,32 +46,6 @@
         </div>
     </nav>
 
-    <script>
-        // Adicionar evento de clique ao botão do menu de serviços
-        document.getElementById("services-menu").addEventListener("click", function() {
-            var dropdownMenu = document.getElementById("dropdown-menu");
-            if (dropdownMenu.classList.contains("active")) {
-                dropdownMenu.classList.remove("active");
-            } else {
-                dropdownMenu.classList.add("active");
-            }
-        });
-
-        // Adicionar evento de clique ao botão do menu toggle
-        document.getElementById("menu-toggle").addEventListener("click", function() {
-            var menuItems = document.querySelector('.menu-items'); // Corrigido para '.menu-items'
-            var navbar = document.querySelector('.navbar');
-            var logo = document.getElementById("logo");
-            if (menuItems.style.display === "none") {
-                menuItems.style.display = "flex";
-                navbar.classList.add("active");
-                logo.style.display = "none";
-            } else {
-                menuItems.style.display = "none";
-                navbar.classList.remove("active");
-                logo.style.display = "flex";
-            }
-        });
-    </script>
+    <script src="navbar.js"></script>
 </body>
 </html>
