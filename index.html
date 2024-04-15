@@ -70,13 +70,10 @@
         }
         @media (max-width: 767px) {
             .navbar .md\:flex {
-                display: flex; /* Exibe os itens do menu quando a largura da tela é de até 768px */
+                display: flex; /* Esconde os itens do menu quando a largura da tela é de até 768px */
             }
             .navbar .menu-toggle {
                 display: block; /* Mostra o menu hamburguer no intervalo de até 768px */
-            }
-            .menu-items { /* Adicionado seletor para os itens do menu */
-                display: none; /* Oculta os itens do menu */
             }
         }
         @media (max-width: 540px) {
@@ -111,7 +108,7 @@
                     </svg>
                 </button>
             </div>
-            <div class="menu-items md:flex flex-col items-start space-y-4 relative"> <!-- Adicionado classe menu-items -->
+            <div class="hidden md:flex flex-col items-start space-y-4 relative menu-items">
                 <a href="#" class="text-white text-lg">Home</a>
                 <a href="#" class="text-white text-lg">Sobre</a>
                 <div class="relative inline-block">
@@ -150,13 +147,13 @@
             var dropdownMenu = document.getElementById("dropdown-menu");
             var navbar = document.querySelector('.navbar');
             var logo = document.getElementById("logo");
-            if (menuItems.classList.contains("hidden")) { // Ajustado para verificar a classe 'hidden'
-                menuItems.classList.remove("hidden");
+            if (menuItems.style.display === "none" || menuItems.style.display === "") { // Ajustado para considerar também quando está vazio
+                menuItems.style.display = "flex";
                 dropdownMenu.classList.add("active");
                 navbar.classList.add("active");
                 logo.classList.add("hidden"); // Oculta a imagem do logotipo ao abrir o menu hamburguer
             } else {
-                menuItems.classList.add("hidden");
+                menuItems.style.display = "none";
                 dropdownMenu.classList.remove("active");
                 navbar.classList.remove("active");
                 logo.classList.remove("hidden"); // Exibe a imagem do logotipo ao fechar o menu hamburguer
