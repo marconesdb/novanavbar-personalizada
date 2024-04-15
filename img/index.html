@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo de Navbar</title>
+    <!-- Adicione o link para o Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Adicione um arquivo CSS externo -->
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar Responsiva -->
+    <nav class="navbar">
+        <div class="container mx-auto flex ">
+            <a href="#" class="text-white text-lg font-semibold flex items-center w-28">
+                <img id="logo" src="./Clown (1).png" alt="" class="logo w-24 h-36  -ml-4 object-cover"> <!-- Adicionei a propriedade object-fit -->
+            </a>
+            <div>
+                <button id="menu-toggle" class="text-white focus:outline-none md:hidden">
+                    <!-- Ícone do menu (hamburger) -->
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="hidden md:flex flex-col items-start space-y-4 relative menu-items">
+                <a href="#" class="text-white text-lg">Home</a>
+                <a href="#" class="text-white text-lg">Sobre</a>
+                <div class="relative inline-block">
+                    <button id="services-menu" class="text-white text-lg" aria-haspopup="true">
+                        Serviços
+                        <svg class="w-6 h-6 inline-block ml-1 -mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <!-- Dropdown menu -->
+                    <div id="dropdown-menu" class="dropdown-menu">
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Serviço 1</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Serviço 2</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Serviço 3</a>
+                    </div>
+                </div>
+                <a href="#" class="text-white text-lg">Contato</a>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        // Adicionar evento de clique ao botão do menu de serviços
+        document.getElementById("services-menu").addEventListener("click", function() {
+            var dropdownMenu = document.getElementById("dropdown-menu");
+            if (dropdownMenu.classList.contains("active")) {
+                dropdownMenu.classList.remove("active");
+            } else {
+                dropdownMenu.classList.add("active");
+            }
+        });
+
+        // Adicionar evento de clique ao botão do menu toggle
+        document.getElementById("menu-toggle").addEventListener("click", function() {
+            var menuItems = document.querySelector('.menu-items'); // Corrigido para '.menu-items'
+            var dropdownMenu = document.getElementById("dropdown-menu");
+            var navbar = document.querySelector('.navbar');
+            var logo = document.getElementById("logo");
+            if (menuItems.style.display === "none" || menuItems.style.display === "") { // Ajustado para considerar também quando está vazio
+                menuItems.style.display = "flex";
+                dropdownMenu.classList.add("active");
+                navbar.classList.add("active");
+                logo.classList.add("hidden"); // Oculta a imagem do logotipo ao abrir o menu hamburguer
+            } else {
+                menuItems.style.display = "none";
+                dropdownMenu.classList.remove("active");
+                navbar.classList.remove("active");
+                logo.classList.remove("hidden"); // Exibe a imagem do logotipo ao fechar o menu hamburguer
+            }
+        });
+    </script>
+</body>
+</html>

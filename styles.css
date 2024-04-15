@@ -1,0 +1,82 @@
+body {
+    background-image: url('./img/gratisography.jpg'); /* Substitua '/caminho/para/sua/imagem.jpg' pelo caminho da sua imagem */
+    background-size: cover; /* Para cobrir completamente a tela */
+    background-position: top center; /* Centralize a imagem */
+    background-repeat: no-repeat; /* Evita a repetição da imagem */
+    margin: 0; /* Remova a margem padrão */
+    padding: 0; /* Remova o preenchimento padrão */
+    min-height: 100vh; /* Garante que o corpo da página ocupe pelo menos a altura da tela */
+    display: flex; /* Flexbox para centralizar verticalmente */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+}
+.navbar {
+    position: fixed; /* Define a posição como fixa para manter a navbar visível ao rolar */
+    top: 50%; /* Alinha a navbar ao centro verticalmente */
+    transform: translateY(-50%); /* Move a navbar para o centro vertical */
+    left: 0; /* Alinha a navbar à esquerda sem margem */
+    width: 40%; /* Define a largura como 40% da largura da tela */
+    padding: 1rem; /* Adiciona algum espaço interno */
+    background-color: rgba(0, 0, 0, 0.8); /* Fundo semi-transparente para melhorar a visibilidade */
+    z-index: 10; /* Ordem de empilhamento para garantir que a navbar fique acima do conteúdo */
+    display: flex; /* Altera o layout para flexível */
+    justify-content: space-between; /* Distribui os elementos uniformemente ao longo do eixo principal */
+    align-items: center; /* Alinha os itens verticalmente */
+}
+.navbar .container {
+    max-width: 7xl; /* Define a largura máxima do conteúdo da navbar */
+    display: flex; /* Layout flexível */
+    justify-content: space-between; /* Distribui os elementos uniformemente ao longo do eixo principal */
+    align-items: center; /* Alinha os itens verticalmente */
+    width: 100%; /* Ocupa toda a largura do contêiner */
+    transition: width 0.3s ease; /* Adiciona uma transição suave ao alterar a largura */
+}
+.dropdown-menu {
+    display: none; /* Inicialmente oculto */
+    position: absolute;
+    z-index: 10;
+    width: max-content;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.dropdown-menu.active {
+    display: block; /* Mostra quando ativo */
+}
+@media (max-width: 1200px) {
+    .navbar {
+        width: 40%; /* Define a largura como 40% da largura da tela dentro do intervalo de até 1200px */
+        padding: 0.5rem; /* Reduz o preenchimento */
+    }
+    .navbar .md\:flex {
+        /* display: none;  Removido para manter os itens do menu visíveis */
+    }
+    .navbar .menu-toggle {
+        display: block; /* Mostra o menu hamburguer no intervalo de até 1200px */
+    }
+    .navbar.active {
+        height: auto; /* Ajusta a altura da navbar automaticamente quando o menu hamburguer é aberto */
+    }
+}
+@media (max-width: 767px) {
+    .navbar .md\:flex {
+        display: flex; /* Esconde os itens do menu quando a largura da tela é de até 768px */
+    }
+    .navbar .menu-toggle {
+        display: block; /* Mostra o menu hamburguer no intervalo de até 768px */
+    }
+}
+@media (max-width: 540px) {
+    .navbar {
+        width: 50%; /* Define a largura como 50% da largura da tela abaixo de 540px */
+        padding: 0.5rem; /* Reduz o preenchimento */
+    }
+    .navbar .md\:flex {
+        /* display: none;  Removido para manter os itens do menu visíveis */
+    }
+    .navbar .menu-toggle {
+        display: block; /* Mostra o menu hamburguer abaixo de 540px */
+    }
+    .navbar.active .container {
+        width: 80%; /* Aumenta a largura do contêiner quando o menu hamburguer é aberto */
+    }
+}
