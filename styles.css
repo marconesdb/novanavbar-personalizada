@@ -42,6 +42,49 @@ body {
 .dropdown-menu.active {
     display: block; /* Mostra quando ativo */
 }
+
+.menu-items a {
+    /* Outros estilos para os itens do menu */
+    color: #fff; /* Cor do texto */
+    text-decoration: none; /* Remover sublinhado */
+    transition: border-bottom 0.3s; /* Adicionar uma transição suave para o efeito de traço */
+    position: relative; /* Para posicionamento relativo */
+}
+
+.menu-items a:hover::after {
+    /* Estilo para adicionar um traço ao passar o mouse */
+    content: ''; /* Adiciona conteúdo pseudo-elemento */
+    position: absolute; /* Posicionamento absoluto em relação ao link pai */
+    left: 0; /* Alinha à esquerda */
+    bottom: -3px; /* Ajusta a posição verticalmente */
+    width: 100%; /* Largura total */
+    border-bottom: 2px solid yellow; /* Adiciona um traço sólido */
+   
+}
+
+.dropdown-menu {
+    display: none; /* Inicialmente oculto */
+    position: absolute;
+    z-index: 10;
+    width: max-content;
+    background-color: black;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #ccc;
+}
+
+
+.dropdown-menu.active {
+    display: block; /* Mostra quando ativo */
+}
+
+/* Adicione este estilo para manter o menu dropdown visível ao passar o mouse sobre ele */
+.dropdown-menu:hover {
+    display: block;
+}
+
+
+
+
 @media (max-width: 1200px) {
     .navbar {
         width: 40%; /* Define a largura como 40% da largura da tela dentro do intervalo de até 1200px */
